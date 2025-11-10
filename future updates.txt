@@ -1,0 +1,56 @@
+Unfinished work or future plans 
+Derivative button to place in advancedGame (around line 340)
+
+
+Hypothetical logic:
+inside advanced():
+
+    elif choice == 3:
+        coeff, power, coeff2, power2 = derivative()
+        return coeff, power, coeff2, power2
+
+in the derivative logic:
+def derivative():
+    """Derivative"""
+    coeff = random.randint(1, 10)
+    power = random.randint(2, 10)
+    coeff2 = coeff * power
+    power2 = power - 1
+    return coeff, power, coeff2, power2
+
+
+
+code for button for the file:
+        derivativeButton = ctk.CTkButton(advFrame,
+                                    text = "Derivative",
+                                    width = 75,
+                                    height = 100,
+                                    font = ("Helvetica Neue", 24, "bold"),
+                                    command=lambda: selectMode("derivative"))
+        derivativeButton.grid(row=1, column=1, padx=10, pady=10)
+
+
+
+Code for the actual derivative screen (place directly after the logarithm function)
+    def derivativeWindow(self, question):
+        """A Window for the derivative portion"""
+        derivFrame = ctk.CTkFrame(self.root, corner_radius = 15)
+        derivFrame.grid(row=0, column=0, padx=20, pady=20)
+        questionFrame = ctk.CTkFrame(derivFrame, corner_radius = 15, width = 300, height = 200)
+        questionFrame.grid(row=0, column = 0)
+        # Debugging
+        print(self.num1 * self.num2, )
+
+
+        def goBack():
+            """Go Back"""
+            derivFrame.grid_forget()
+            self.advancedGame()
+
+        backButton = ctk.CTkButton(derivFrame,
+                                text = "Back",
+                                width = 200,
+                                height = 100,
+                                font = ("Helvetica Neue", 24, "bold"),
+                                command=goBack)
+        backButton.grid(row=1, column=0, padx=10, pady=10)
